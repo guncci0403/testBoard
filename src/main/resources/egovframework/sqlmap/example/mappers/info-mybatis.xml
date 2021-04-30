@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="kr.co.systemgate.board.mapper.InfoMapper">
+	
+	<select id="selectInfo" resultType="kr.co.systemgate.board.vo.InfoVO" parameterType="kr.co.systemgate.board.vo.InfoVO">
+		SELECT *
+		FROM t_comtnauthorinfo
+		WHERE author_code = '100000'
+	</select>
+	
+	<!-- mysql 페이징처리 -->
+	<select id="selectPagingInfo" parameterType="kr.co.systemgate.common.vo.PageVO" resultType="kr.co.systemgate.board.vo.InfoVO">
+		SELECT R1.* FROM (
+			SELECT * FROM t_comtnauthorinfo
+			ORDER BY AUTHOR_CODE) R1
+		LIMIT #{pageSize} OFFSET #{page} <!-- (#{page}-1) * #{pageSize}  limit절에서는 연산자 사용x page변수를 자바단에서 처리함 -->
+	</select>
+	
+	<select id="selectInfoCnt" resultType="int">
+	        SELECT count(*)
+			FROM t_comtnauthorinfo
+	</select>
+	
+	<!-- oracle 페이징처리 -->
+	<!-- <select id="select">
+			SELECT *
+			  FROM (SELECT ROWNUM rn, a.*
+				  	  FROM (SELECT *
+			                  FROM t_comtnauthorinfo
+						 	  ORDER BY AUTHOR_CODE DESC) a
+					  WHERE ROWNUM &lt;= #{page} * #{pageSize})
+			 WHERE rn BETWEEN (#{page}-1)* #{pageSize} + 1 AND #{page} * #{pageSize}
+		</select> -->
+</mapper>
