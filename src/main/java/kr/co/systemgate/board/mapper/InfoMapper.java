@@ -10,8 +10,8 @@ import kr.co.systemgate.common.vo.PageVO;
 public interface InfoMapper {
 	//test
 	public InfoVO selectInfo(InfoVO infoVO) throws Exception;
-	
 	//authorinfo 페이징 처리
 	public List<InfoVO> selectPagingInfo(PageVO pageVO) throws Exception;
+	
 	public int selectInfoCnt() throws Exception;
 }

@@ -4,7 +4,7 @@ package kr.co.systemgate.board.vo;
 public class InfoVO {
 	
 	// 권한코드
-	private String author_code;
+	private String authorCode;
 	
 	// 권한명
 	private String author_nm;
@@ -15,12 +15,13 @@ public class InfoVO {
 	// 권한생성일
 	private String author_creat_de;
 
-	public String getAuthor_code() {
-		return author_code;
+
+	public String getAuthorCode() {
+		return authorCode;
 	}
 
-	public void setAuthor_code(String author_code) {
-		this.author_code = author_code;
+	public void setAuthorCode(String authorCode) {
+		this.authorCode = authorCode;
 	}
 
 	public String getAuthor_nm() {
@@ -47,10 +48,5 @@ public class InfoVO {
 		this.author_creat_de = author_creat_de;
 	}
 
-	@Override
-	public String toString() {
-		return "InfoVO [author_code=" + author_code + ", author_nm=" + author_nm + ", author_dc=" + author_dc
-				+ ", author_creat_de=" + author_creat_de + "]";
-	}
 	
 }
