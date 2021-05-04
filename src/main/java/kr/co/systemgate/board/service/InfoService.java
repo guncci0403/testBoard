@@ -20,20 +20,17 @@ public class InfoService {
 	@Resource(name="infoMapper")
 	private InfoMapper infoMapper;
 	
-	//test
-	public InfoVO selectInfo(InfoVO infoVO) throws Exception {
-		logger.debug("==============map====================: {}");
-		
-		return infoMapper.selectInfo(infoVO);
-	}
-	
-	//authorinfo 페이징 처리
+	//권한 정보 페이징 처리
 	public Map<String, Object> selectPagingInfo(PageVO pageVO) throws Exception{
 		Map<String, Object>map = new HashMap<>();
 		map.put("infoList", infoMapper.selectPagingInfo(pageVO));
 		map.put("cnt", infoMapper.selectInfoCnt());
-		
 		return map;
+	}
+	
+	//권한 정보 등록
+	public int insertInfo(InfoVO infoVO) throws Exception{
+		return infoMapper.insertInfo(infoVO);
 	}
 	
 	

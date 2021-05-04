@@ -2,15 +2,31 @@ package kr.co.systemgate.common.vo;
 
 public class PageVO {
 
+	
+	private int colNo;
 	private int page;
 	private int pageSize;
 	
 	
-	public PageVO(int page, int pageSize) {
-		this.page = page;
+	public PageVO(int colNo, int pageSize) {
+		this.colNo = colNo;
 		this.pageSize = pageSize;
 	}
 
+	
+	public int getColNo() {
+		return colNo;
+	}
+
+
+	public void setColNo(int colNo) {
+		this.colNo = colNo;
+	}
+
+
+	public int getPage() {
+		return page;
+	}
 
 	public void setPage(int page) {
 		this.page = page;

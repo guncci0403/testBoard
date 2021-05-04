@@ -7,15 +7,16 @@ public class InfoVO {
 	private String authorCode;
 	
 	// 권한명
-	private String author_nm;
+	private String authorNm;
 	
 	// 권한설명
-	private String author_dc;
+	private String authorDc;
 	
 	// 권한생성일
-	private String author_creat_de;
+	private String authorCreatDe;
 
 
+	
 	public String getAuthorCode() {
 		return authorCode;
 	}
@@ -24,29 +25,30 @@ public class InfoVO {
 		this.authorCode = authorCode;
 	}
 
-	public String getAuthor_nm() {
-		return author_nm;
+	public String getAuthorNm() {
+		return authorNm;
 	}
 
-	public void setAuthor_nm(String author_nm) {
-		this.author_nm = author_nm;
+	public void setAuthorNm(String authorNm) {
+		this.authorNm = authorNm;
 	}
 
-	public String getAuthor_dc() {
-		return author_dc;
+	public String getAuthorDc() {
+		return authorDc;
 	}
 
-	public void setAuthor_dc(String author_dc) {
-		this.author_dc = author_dc;
+	public void setAuthorDc(String authorDc) {
+		this.authorDc = authorDc;
 	}
 
-	public String getAuthor_creat_de() {
-		return author_creat_de;
+	public String getAuthorCreatDe() {
+		return authorCreatDe;
 	}
 
-	public void setAuthor_creat_de(String author_creat_de) {
-		this.author_creat_de = author_creat_de;
+	public void setAuthorCreatDe(String authorCreatDe) {
+		this.authorCreatDe = authorCreatDe;
 	}
 
+	
 	
 }

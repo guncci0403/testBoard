@@ -34,7 +34,5 @@ public class InfoJsonVO {
 	public void setRows(List<InfoVO> rows) {
 		this.rows = rows;
 	}
-    
-    
 
 }

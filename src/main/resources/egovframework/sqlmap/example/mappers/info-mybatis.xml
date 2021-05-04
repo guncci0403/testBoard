@@ -2,31 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="kr.co.systemgate.board.mapper.InfoMapper">
 
-	<!-- <resultMap type="kr.co.systemgate.board.vo.InfoVO" id="authorinfo">
-		 <id property="authorCode" column="AUTHOR_CODE" />
-		 <result property="authorNm" column="AUTHOR_NM" />
-		 <result property="authorDc" column="AUTHOR_DC" />
-		 <result property="authorCreatDe" column="AUTHOR_CREAT_DE" />
-	 </resultMap> -->
-
-	
-	<select id="selectInfo" resultType="kr.co.systemgate.board.vo.InfoVO" parameterType="kr.co.systemgate.board.vo.InfoVO">
-		SELECT *
-		FROM t_comtnauthorinfo
-		WHERE author_code = '100000'
-	</select>
+	<resultMap type="kr.co.systemgate.board.vo.InfoVO" id="infoResultMap">
+		 <id property="authorCode" column="author_code" />
+		 <result property="authorNm" column="author_nm" />
+		 <result property="authorDc" column="author_dc" />
+ 	</resultMap>
 	
 	<!-- mysql 페이징처리 -->
-	<select id="selectPagingInfo" parameterType="kr.co.systemgate.common.vo.PageVO" resultType="kr.co.systemgate.board.vo.InfoVO">
-<!-- 		SELECT R1.* FROM ( -->
-			SELECT author_code as authorCode FROM t_comtnauthorinfo
+	<select id="selectPagingInfo" parameterType="kr.co.systemgate.common.vo.PageVO" resultMap="infoResultMap">
+		<!-- SELECT author_code as authorCode, author_nm as authorNm, author_dc as authorDc, date_format(author_creat_de, '%Y-%m-%d') as authorCreatDe -->
+			SELECT author_code, author_nm, author_dc, date_format(author_creat_de, '%Y-%m-%d') as authorCreatDe
+			FROM t_comtnauthorinfo
 			ORDER BY AUTHOR_CODE
-<!-- 			) R1 -->
-			LIMIT #{pageSize} OFFSET #{page}
+ 			LIMIT #{pageSize} OFFSET #{colNo}
 	</select>
 	
 	<select id="selectInfoCnt" resultType="int">
 	        SELECT count(*)
 			FROM t_comtnauthorinfo
 	</select>
+
+	<insert id="insertInfo" parameterType="kr.co.systemgate.board.vo.InfoVO">
+		INSERT INTO t_comtnauthorinfo(author_code, author_nm, author_dc, author_creat_de)
+		VALUES(#{authorCode}, #{authorNm}, #{authorDc}, now())
+	</insert>
 </mapper>
